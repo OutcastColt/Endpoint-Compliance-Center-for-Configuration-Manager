@@ -12,13 +12,14 @@
   --bg-border: #334155;
   --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-muted: #8d9eb5;
   --status-compliant: #22c55e;
   --status-warning: #f59e0b;
   --status-critical: #ef4444;
   --status-unknown: #64748b;
   --status-pending: #a78bfa;
   --accent-primary: #0078d4;
+  --accent-text: #4fa8e0;
   --accent-hover: #106ebe;
 }
 

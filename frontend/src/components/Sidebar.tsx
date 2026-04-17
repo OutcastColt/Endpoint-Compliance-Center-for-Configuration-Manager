@@ -47,7 +47,7 @@ export function Sidebar() {
           <NavLink
             key={to}
             to={to}
-            aria-current={undefined}
+            aria-label={sidebarCollapsed ? label : undefined}
             style={({ isActive }) => ({
               display: 'flex',
               alignItems: 'center',
@@ -62,7 +62,6 @@ export function Sidebar() {
               transition: 'background 100ms ease',
               whiteSpace: 'nowrap',
             })}
-            className={({ isActive }) => isActive ? '[aria-current=page]' : ''}
           >
             {({ isActive }) => (
               <>

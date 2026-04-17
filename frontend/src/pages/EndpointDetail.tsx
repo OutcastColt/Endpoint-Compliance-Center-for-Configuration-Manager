@@ -61,7 +61,7 @@ export function EndpointDetail() {
       </nav>
 
       {/* Header */}
-      <div className="flex items-start justify-between mb-6">
+      <div className="flex items-start justify-between gap-4 mb-6 flex-wrap">
         <div>
           <h1 style={{ color: 'var(--text-primary)', fontSize: 22, fontWeight: 700, fontFamily: 'monospace' }}>
             {endpoint.hostname}
@@ -75,7 +75,7 @@ export function EndpointDetail() {
             <StatusBadge status={endpoint.status} />
           </div>
         </div>
-        <div className="flex items-center gap-2 flex-shrink-0">
+        <div className="flex items-center gap-2 flex-wrap">
           <button
             style={{ color: 'var(--accent-primary)', background: 'rgba(0,120,212,0.08)', border: '1px solid rgba(0,120,212,0.2)' }}
             className="flex items-center gap-1.5 px-3 py-2 rounded-md text-sm"
@@ -96,12 +96,19 @@ export function EndpointDetail() {
       {/* Tabs */}
       <div style={{ borderBottom: '1px solid var(--bg-border)', marginBottom: 24 }} role="tablist" aria-label="Endpoint detail sections">
         <div className="flex gap-0">
-          {TABS.map((tab) => (
+          {TABS.map((tab, i) => (
             <button
               key={tab}
               role="tab"
+              id={`tab-${tab}`}
               aria-selected={activeTab === tab}
+              aria-controls={`tabpanel-${tab}`}
+              tabIndex={activeTab === tab ? 0 : -1}
               onClick={() => setActiveTab(tab)}
+              onKeyDown={(e) => {
+                if (e.key === 'ArrowRight') setActiveTab(TABS[(i + 1) % TABS.length]);
+                if (e.key === 'ArrowLeft') setActiveTab(TABS[(i - 1 + TABS.length) % TABS.length]);
+              }}
               style={{
                 color: activeTab === tab ? 'var(--accent-primary)' : 'var(--text-secondary)',
                 borderBottom: activeTab === tab ? '2px solid var(--accent-primary)' : '2px solid transparent',
@@ -121,7 +128,7 @@ export function EndpointDetail() {
       </div>
 
       {/* Tab content */}
-      <div role="tabpanel" aria-label={activeTab}>
+      <div role="tabpanel" id={`tabpanel-${activeTab}`} aria-labelledby={`tab-${activeTab}`}>
         {activeTab === 'Compliance' && (
           <div className="flex flex-col gap-3">
             {mockRules.map((rule) => (

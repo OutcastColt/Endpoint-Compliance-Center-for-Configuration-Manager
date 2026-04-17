@@ -55,6 +55,7 @@ export function Dashboard() {
           <h2 style={{ color: 'var(--text-primary)', fontSize: 15, fontWeight: 600, marginBottom: 20 }}>
             Compliance Trend (30 days)
           </h2>
+          <div role="img" aria-label="Line chart showing compliance percentage trend over the past 30 days">
           <ResponsiveContainer width="100%" height={180}>
             <LineChart data={mockTrendData} margin={{ top: 4, right: 4, bottom: 0, left: -20 }}>
               <XAxis dataKey="date" tick={{ fill: 'var(--text-muted)', fontSize: 11 }} tickLine={false} axisLine={false} />
@@ -66,6 +67,7 @@ export function Dashboard() {
               <Line type="monotone" dataKey="compliant" stroke="#0078d4" strokeWidth={2} dot={false} />
             </LineChart>
           </ResponsiveContainer>
+          </div>
         </div>
 
         <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--bg-border)' }} className="rounded-lg p-6">
@@ -109,6 +111,7 @@ export function Dashboard() {
             View all
           </button>
         </div>
+        <div className="overflow-x-auto">
         <table className="w-full text-sm" style={{ borderCollapse: 'collapse' }}>
           <thead>
             <tr style={{ borderBottom: '1px solid var(--bg-border)' }}>
@@ -122,6 +125,8 @@ export function Dashboard() {
               <tr
                 key={ep.id}
                 onClick={() => navigate(`/endpoints/${ep.id}`)}
+                onKeyDown={(e) => e.key === 'Enter' && navigate(`/endpoints/${ep.id}`)}
+                tabIndex={0}
                 style={{ borderBottom: '1px solid var(--bg-border)', cursor: 'pointer' }}
                 className="hover:bg-[var(--bg-elevated)] transition-colors"
               >
@@ -133,6 +138,7 @@ export function Dashboard() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );

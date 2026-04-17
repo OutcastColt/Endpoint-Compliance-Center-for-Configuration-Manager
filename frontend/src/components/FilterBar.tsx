@@ -38,6 +38,7 @@ export function FilterBar({ filters, onSearch, onFilter, activeFilters, onClearF
           <input
             type="search"
             placeholder="Search endpoints..."
+            aria-label="Search endpoints"
             value={query}
             onChange={(e) => handleSearch(e.target.value)}
             style={{
@@ -45,7 +46,7 @@ export function FilterBar({ filters, onSearch, onFilter, activeFilters, onClearF
               border: '1px solid var(--bg-border)',
               color: 'var(--text-primary)',
             }}
-            className="w-full pl-9 pr-3 py-2 rounded-md text-sm focus:outline-none focus:border-[var(--accent-primary)]"
+            className="w-full pl-9 pr-3 py-2 rounded-md text-sm focus:border-[var(--accent-primary)]"
           />
         </div>
         {filters.map((f) => (
@@ -53,12 +54,13 @@ export function FilterBar({ filters, onSearch, onFilter, activeFilters, onClearF
             key={f.key}
             value={activeFilters[f.key] ?? ''}
             onChange={(e) => onFilter(f.key, e.target.value)}
+            aria-label={`Filter by ${f.label}`}
             style={{
               background: 'var(--bg-surface)',
               border: '1px solid var(--bg-border)',
               color: activeFilters[f.key] ? 'var(--text-primary)' : 'var(--text-muted)',
             }}
-            className="px-3 py-2 rounded-md text-sm focus:outline-none focus:border-[var(--accent-primary)] cursor-pointer"
+            className="px-3 py-2 rounded-md text-sm focus:border-[var(--accent-primary)] cursor-pointer"
           >
             <option value="">{f.label}</option>
             {f.options.map((o) => (

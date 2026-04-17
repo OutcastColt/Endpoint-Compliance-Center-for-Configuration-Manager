@@ -165,7 +165,7 @@ export function Endpoints() {
           <table
             className="w-full text-sm"
             style={{ borderCollapse: 'collapse' }}
-            role="grid"
+            role="table"
             aria-label="Endpoints table"
           >
             <thead style={{ borderBottom: '1px solid var(--bg-border)', position: 'sticky', top: 0, background: 'var(--bg-surface)' }}>

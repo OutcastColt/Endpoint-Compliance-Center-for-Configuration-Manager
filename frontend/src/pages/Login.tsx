@@ -63,7 +63,7 @@ export function Login() {
                 placeholder="domain\username"
                 required
                 style={{ background: 'var(--bg-elevated)', border: '1px solid var(--bg-border)', color: 'var(--text-primary)' }}
-                className="w-full px-3 py-2.5 rounded-md text-sm focus:outline-none focus:border-[var(--accent-primary)]"
+                className="w-full px-3 py-2.5 rounded-md text-sm focus:border-[var(--accent-primary)]"
               />
             </div>
 
@@ -79,7 +79,7 @@ export function Login() {
                   autoComplete="current-password"
                   required
                   style={{ background: 'var(--bg-elevated)', border: '1px solid var(--bg-border)', color: 'var(--text-primary)' }}
-                  className="w-full px-3 py-2.5 pr-10 rounded-md text-sm focus:outline-none focus:border-[var(--accent-primary)]"
+                  className="w-full px-3 py-2.5 pr-10 rounded-md text-sm focus:border-[var(--accent-primary)]"
                 />
                 <button
                   type="button"
@@ -117,7 +117,7 @@ export function Login() {
             </button>
           </form>
 
-          <div aria-live="polite" className="mt-4">
+          <div className="mt-4">
             <p style={{ color: 'var(--text-muted)', fontSize: 12, textAlign: 'center' }}>
               Using local authentication (AD unavailable)
             </p>
